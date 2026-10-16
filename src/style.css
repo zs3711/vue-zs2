@@ -1,0 +1,137 @@
+/* ========== 全局设计系统：CSS 变量令牌 ========== */
+:root {
+  /* 主色系：蓝紫渐变 */
+  --c-primary: #6366f1;
+  --c-primary-2: #8b5cf6;
+  --c-accent: #ec4899;
+
+  /* 文字 */
+  --c-text: #1f2937;
+  --c-text-soft: #6b7280;
+  --c-text-mute: #9ca3af;
+  --c-text-on-primary: #ffffff;
+
+  /* 背景 */
+  --c-bg: #f5f7fa;
+  --c-bg-grad-1: #eef2ff;
+  --c-bg-grad-2: #faf5ff;
+  --c-card: #ffffff;
+  --c-card-soft: #f9fafb;
+  --c-overlay: rgba(255, 255, 255, 0.7);
+
+  /* 边框 */
+  --c-border: #e5e7eb;
+  --c-border-soft: #f1f5f9;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 8px 24px rgba(99, 102, 241, 0.12);
+  --shadow-lg: 0 16px 48px rgba(99, 102, 241, 0.18);
+
+  /* 圆角 */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-pill: 999px;
+
+  /* 渐变 */
+  --grad-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --grad-soft: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%);
+
+  /* 字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* 暗色主题：类名加在 body 上，故用 body.dark-mode */
+body.dark-mode {
+  --c-text: #e8e8e8;
+  --c-text-soft: #a1a1aa;
+  --c-text-mute: #71717a;
+  --c-bg: #0f172a;
+  --c-bg-grad-1: #1e1b4b;
+  --c-bg-grad-2: #0f172a;
+  --c-card: #1e293b;
+  --c-card-soft: #243044;
+  --c-overlay: rgba(30, 41, 59, 0.7);
+  --c-border: #334155;
+  --c-border-soft: #243044;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+  --grad-soft: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  padding: 28px 16px 60px;
+  font-family: var(--font-sans);
+  color: var(--c-text);
+  background: var(--c-bg);
+  background-image: radial-gradient(circle at 15% 10%, var(--c-bg-grad-1) 0%, transparent 45%),
+    radial-gradient(circle at 85% 90%, var(--c-bg-grad-2) 0%, transparent 45%);
+  background-attachment: fixed;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  color: var(--c-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--c-primary-2);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-border);
+  border-radius: var(--r-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-primary);
+}
+
+/* 通用动画 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
